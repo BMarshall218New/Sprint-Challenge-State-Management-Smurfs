@@ -52,22 +52,21 @@ export const getSmurf = () => {
 
 
 export const addSmurf = newSmurf => dispatch => {
-    dispatch({ type: ADD_SMURF })
-    axios
-        .post("http://localhost:3333/smurfs", newSmurf)
+    console.log("from the add smurf action :", newSmurf);
+    axios.post("http://localhost:3333/smurfs", newSmurf)
         .then(res => {
-            console.log("data from post request: ", res.data)
+            console.log(res.data)
             dispatch({ type: ADD_SMURF, payload: res.data })
-
         })
-        .catch(err => {
-            console.log("attempting to post new smurf: ", err)
-
-        });
-
 }
 
-
+// export const addSmurf = (newSmurf) => {
+//     return dispatch => {
+//         axios.post('http://localhost:3333/smurfs', newSmurf)
+//             .then(res => dispatch({ type: ADD_SMURF, payload: res.data }))
+//             .catch(err => console.log("attempting to post new smurf: ", err))
+//     }
+// }
 
 
 

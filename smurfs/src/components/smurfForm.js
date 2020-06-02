@@ -10,17 +10,20 @@ function SmurfForm(props) {
         height: "",
     });
 
-    const handleChanges = e => {
+    const formChange = e => {
+
         setNewSmurf({
+
             ...newSmurf, [e.target.name]: e.target.value
+
         })
+        console.log(newSmurf)
     }
     const onSubmit = e => {
-
-        e.preventDefault();
         props.addSmurf(newSmurf)
         setNewSmurf({})
         console.log("newsmurf should appear", newSmurf)
+        e.preventDefault()
     }
 
     return (
@@ -28,17 +31,17 @@ function SmurfForm(props) {
             {/* <form> */}
 
             <input type="text"
-                handleChanges={handleChanges}
+                onChange={formChange}
                 placeholder="Name"
                 name="name"
             />
             <input type="number"
-                handleChanges={handleChanges}
+                onChange={formChange}
                 placeholder="Age"
                 name="age"
             />
             <input type="number"
-                handleChanges={handleChanges}
+                onChange={formChange}
                 placeholder="Height in cm"
                 name="height"
             />
